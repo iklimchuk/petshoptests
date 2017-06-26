@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test" parallel="false">
+    <parameter name="loginURL" value="http://192.168.0.157:8080/petclinic/"/>
+    <test name="HomePageTest">
+        <classes>
+            <class name="test.HomePageTest"/>
+        </classes>
+    </test>
+    <test name="FindOwnersPageTest">
+        <classes>
+            <class name="test.FindOwnersPageTest"/>
+        </classes>
+    </test>
+    <test name="NewOwnerPage">
+        <classes>
+            <class name="test.NewOwnerPageTest"/>
+        </classes>
+    </test>
+    <test name="VeterinariansPage">
+        <classes>
+            <class name="test.VeterinariansPageTest"/>
+        </classes>
+    </test>
+    <test name="ErrorPage">
+        <classes>
+            <class name="test.ErrorPageTest"/>
+        </classes>
+    </test>
+</suite>
