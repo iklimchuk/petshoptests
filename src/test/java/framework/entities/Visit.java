@@ -5,9 +5,9 @@ import framework.pages.VisitDetailsPage;
 public class Visit {
     private static int visitCounter = 1;
     private Pet pet;
-    private String date;
-    private String description;
-    private VisitDetailsPage visitDetailsPage = new VisitDetailsPage();
+    private final String date;
+    private final String description;
+    private final VisitDetailsPage visitDetailsPage = new VisitDetailsPage();
 
     public Visit(Pet pet) {
         this.pet = pet;

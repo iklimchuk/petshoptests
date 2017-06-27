@@ -14,10 +14,10 @@ public class Pet {
     private static int petsCount = 1;
     private List<Visit> visitList = new ArrayList<>();
     private String name;
-    private String birthDate;
-    private PetType petType;
+    private final String birthDate;
+    private final PetType petType;
     private Owner owner;
-    private PetDetailsPage petDetailsPage = new PetDetailsPage();
+    private final PetDetailsPage petDetailsPage = new PetDetailsPage();
 
     public Pet(Owner owner) {
         name = String.format("petName_%s_%d", TEST_ID, petsCount++);

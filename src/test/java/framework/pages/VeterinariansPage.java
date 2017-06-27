@@ -44,7 +44,7 @@ public class VeterinariansPage extends BasePage implements LandingPage {
 
     public boolean xmlContentMatchesUiVetList(List<Veterinarian> veterinarianList) {
         String pageSourceCodeHTML = browser.getPageSourceCode();
-        List<TagNode> nodesList = convertHtmlToWellFormedXml(pageSourceCodeHTML);
+        List<TagNode> nodesList = getXmlNodesFromHtml(pageSourceCodeHTML);
         int matchesCount = 0;
         for (Veterinarian vet : veterinarianList) {
             for (TagNode node : nodesList) {
@@ -58,7 +58,7 @@ public class VeterinariansPage extends BasePage implements LandingPage {
         return matchesCount == veterinarianList.size() && matchesCount == nodesList.size();
     }
 
-    private List<TagNode> convertHtmlToWellFormedXml(String htmlSource) {
+    private List<TagNode> getXmlNodesFromHtml(String htmlSource) {
         HtmlCleaner cleaner = new HtmlCleaner();
         TagNode node = cleaner.clean(htmlSource);
         List<TagNode> nodesList = node.getAllElementsList(true);
@@ -70,14 +70,14 @@ public class VeterinariansPage extends BasePage implements LandingPage {
         String firstName = node.findElementByName("firstname", false).getAllChildren().get(0).toString();
         String lastName = node.findElementByName("lastname", false).getAllChildren().get(0).toString();
         StringBuilder specialties = new StringBuilder();
-        List<TagNode> specialtiesNodes = node.getElementListByName("name", true);
-        if (specialtiesNodes.size() == 0) {
+        List<TagNode> specialtiesNode = node.getElementListByName("name", true);
+        if (specialtiesNode.size() == 0) {
             specialties = new StringBuilder("none");
-        } else if (specialtiesNodes.size() == 1) {
-            specialties = new StringBuilder(specialtiesNodes.get(0).getAllChildren().get(0).toString());
+        } else if (specialtiesNode.size() == 1) {
+            specialties = new StringBuilder(specialtiesNode.get(0).getAllChildren().get(0).toString());
         } else {
             int itemsCount = 0;
-            for (TagNode spec : specialtiesNodes) {
+            for (TagNode spec : specialtiesNode) {
                 if (++itemsCount > 1) {
                     specialties.append(" ");
                 }

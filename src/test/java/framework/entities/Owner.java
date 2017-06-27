@@ -103,8 +103,9 @@ public class Owner {
         find();
         boolean allPetsPresentInTheList = true;
         for (Pet pet : petsList) {
-            if (!ownerDetailsPage.findPetInTheList(pet)) {
+            if (!ownerDetailsPage.petIsPresentInTheList(pet)) {
                 allPetsPresentInTheList = false;
+                break;
             }
         }
         return allPetsPresentInTheList;

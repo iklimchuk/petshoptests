@@ -21,7 +21,7 @@ public class OwnerDetailsPage extends BasePage implements DetailsPage {
         return browser.isVisible(By.xpath(".//input[@id='city']/following-sibling::span"));
     }
 
-    public boolean findPetInTheList(Pet pet) {
+    public boolean petIsPresentInTheList(Pet pet) {
         boolean listContainsPet = false;
         List<WebElement> petsTableItemsList = browser.getElementsList(By.xpath(".//table[@class='table']"));
         for (WebElement tableItem : petsTableItemsList) {
